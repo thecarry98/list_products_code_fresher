@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:list_products_code_fresher/model/product.dart';
 import 'package:list_products_code_fresher/pages/edit_page.dart';
 import 'package:list_products_code_fresher/control/control.dart';
+import 'package:list_products_code_fresher/pages/home_page.dart';
 
 class productWidget extends StatelessWidget {
-  const productWidget(
-      {super.key, /*required this.product*/ required this.index});
+  productWidget({super.key, required this.index, this.callbackFn});
 
-  // final List<Product> list;
-  // final Product product;
   final int index;
-  // final Control control;
+  VoidCallback? callbackFn;
 
   Widget rowProduct(
     String link,
@@ -18,6 +16,7 @@ class productWidget extends StatelessWidget {
     double size,
   ) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(size / 2),
@@ -28,14 +27,23 @@ class productWidget extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Text(title),
+        Flexible(
+          child: Text(
+            title,
+            // maxLines: 1,
+            style: TextStyle(fontSize: 25),
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ],
     );
   }
 
-  Widget rowIcon(BuildContext context) {
+  Widget rowIcon(BuildContext context, int index) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       IconButton(
+        iconSize: 30,
         icon: Icon(
           Icons.edit,
           color: Colors.purple,
@@ -49,6 +57,7 @@ class productWidget extends StatelessWidget {
         },
       ),
       IconButton(
+        iconSize: 30,
         icon: Icon(
           Icons.call_end,
           color: Colors.green,
@@ -56,21 +65,27 @@ class productWidget extends StatelessWidget {
         onPressed: (() {}),
       ),
       IconButton(
+        iconSize: 30,
         icon: Icon(
           Icons.delete,
           color: Colors.red,
         ),
-        onPressed: (() {
-          //setState((){delProduct(i)});
-        }),
+        onPressed: callbackFn,
       ),
     ]);
   }
 
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-      rowProduct(list[index].linkImage, list[index].title, 30),
-      rowIcon(context),
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+      Expanded(
+          flex: 3,
+          child: rowProduct(list[index].linkImage, list[index].title, 50)),
+      Expanded(
+          flex: 2,
+          child: rowIcon(
+            context,
+            index,
+          )),
     ]);
   }
 }

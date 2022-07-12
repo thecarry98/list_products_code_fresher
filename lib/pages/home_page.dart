@@ -15,26 +15,10 @@ class HomePages extends StatefulWidget {
 }
 
 class _HomePagesState extends State<HomePages> {
-  // _HomePagesState({required this.list});
   titleAppBar _title() => titleAppBar(title: 'Your products');
 
-  // final List<Product> list = [];
-  // Product product()=>Product
-  // final length = list.length;
   void initState() {
     super.initState();
-    // setState(() {
-    // list.add(widget.product!);
-    // });
-
-    // length = list.length;
-    // Product pro1() => Product(
-    //     title: 'Product 1',
-    //     linkImage:
-    //         'https://1.bigdata-vn.com/wp-content/uploads/2021/12/Hinh-Nen-Girl-Xinh-Full-HD-Cho-Laptop-Va-May.jpg',
-    //     price: 0.0,
-    //     description: 'haah');
-    // list.add(pro1());
   }
 
   removeList(int index) {
@@ -60,10 +44,13 @@ class _HomePagesState extends State<HomePages> {
   Widget listView() => ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, index) {
-        // Product product = list[index];
-
         return Container(
-          child: productWidget(index: index),
+          child: productWidget(
+              index: index,
+              callbackFn: () {
+                removeList(index);
+                // print(list);
+              }),
         );
       });
 
@@ -75,7 +62,6 @@ class _HomePagesState extends State<HomePages> {
         actions: [addAction()],
       ),
       body: listView(),
-      // children: [productWidget(product: pro1())],
     );
   }
 }

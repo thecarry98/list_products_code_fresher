@@ -25,11 +25,4 @@ class Product {
         price: price ?? this.price,
         description: description ?? this.description,
       );
-  getLink() {
-    return this.linkImage;
-  }
-
-  getTitle() {
-    return this.title;
-  }
 }

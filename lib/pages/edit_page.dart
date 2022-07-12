@@ -7,7 +7,6 @@ import 'package:list_products_code_fresher/pages/home_page.dart';
 class EditPage extends StatefulWidget {
   EditPage({super.key, this.product, this.index});
   Product? product;
-  // final List<Product> list;
   int? index;
   _editPageState createState() => _editPageState();
 }
@@ -33,11 +32,12 @@ class _editPageState extends State<EditPage> {
       icon: Icon(Icons.save),
       onPressed: (() {
         addOrUpdateProduct(widget.index == null ? 0 : widget.index!);
-        //setState(() {
-        //addProduct();
-        //});
       }),
     );
+  }
+
+  void refresh() {
+    setState(() {});
   }
 
   titleAppBar _title() => titleAppBar(title: 'Edit Product');
@@ -83,10 +83,6 @@ class _editPageState extends State<EditPage> {
         await addProduct();
       }
     }
-    // Navigator.pop(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) => HomePages(product: list[index])));
   }
 
   Future updateProduct(int index) async {
@@ -97,12 +93,12 @@ class _editPageState extends State<EditPage> {
       linkImage: linkImage,
     );
     list[index] = newProduct;
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePages(),
-      ),
-    );
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePages(),
+        ),
+        (Route<dynamic> route) => route is HomePages);
   }
 
   Future addProduct() async {
@@ -112,15 +108,14 @@ class _editPageState extends State<EditPage> {
       description: description,
       linkImage: linkImage,
     );
-    //setState(() {
+
     list.add(newProduct);
-    //});
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePages(),
-      ),
-    );
-    //});
+
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePages(),
+        ),
+        (Route<dynamic> route) => route is HomePages);
   }
 }
