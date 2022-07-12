@@ -41,18 +41,29 @@ class _HomePagesState extends State<HomePages> {
     );
   }
 
-  Widget listView() => ListView.builder(
-      itemCount: list.length,
-      itemBuilder: (context, index) {
-        return Container(
-          child: productWidget(
-              index: index,
-              callbackFn: () {
-                removeList(index);
-                // print(list);
-              }),
-        );
-      });
+  Widget listView() => ListView.separated(
+        itemCount: list.length,
+        itemBuilder: (context, index) {
+          return Container(
+            child: productWidget(
+                index: index,
+                callbackFn: () {
+                  removeList(index);
+                  // print(list);
+                }),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(
+              height: 0,
+              thickness: 1,
+              color: Colors.black.withOpacity(0.5),
+            ),
+          );
+        },
+      );
 
   Widget build(BuildContext context) {
     return Scaffold(

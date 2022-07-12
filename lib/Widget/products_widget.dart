@@ -16,7 +16,7 @@ class productWidget extends StatelessWidget {
     double size,
   ) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(size / 2),
@@ -27,13 +27,17 @@ class productWidget extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Flexible(
-          child: Text(
-            title,
-            // maxLines: 1,
-            style: TextStyle(fontSize: 25),
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
+        // Spacer(),
+        Container(
+          margin: EdgeInsets.only(left: 10),
+          child: Flexible(
+            child: Text(
+              title,
+              // maxLines: 1,
+              style: TextStyle(fontSize: 25),
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       ],
@@ -76,16 +80,19 @@ class productWidget extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      Expanded(
-          flex: 3,
-          child: rowProduct(list[index].linkImage, list[index].title, 50)),
-      Expanded(
-          flex: 2,
-          child: rowIcon(
-            context,
-            index,
-          )),
-    ]);
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Expanded(
+            flex: 3,
+            child: rowProduct(list[index].linkImage, list[index].title, 50)),
+        Expanded(
+            flex: 2,
+            child: rowIcon(
+              context,
+              index,
+            )),
+      ]),
+    );
   }
 }
