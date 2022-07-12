@@ -4,10 +4,11 @@ import 'package:list_products_code_fresher/pages/edit_page.dart';
 import 'package:list_products_code_fresher/control/control.dart';
 
 class productWidget extends StatelessWidget {
-  const productWidget({super.key, required this.product, required this.index});
+  const productWidget(
+      {super.key, /*required this.product*/ required this.index});
 
   // final List<Product> list;
-  final Product product;
+  // final Product product;
   final int index;
   // final Control control;
 
@@ -66,8 +67,8 @@ class productWidget extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      rowProduct(product.linkImage, product.title, 30),
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      rowProduct(list[index].linkImage, list[index].title, 30),
       rowIcon(context),
     ]);
   }

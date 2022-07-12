@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:list_products_code_fresher/Widget/title_app_bar.dart';
 import 'package:list_products_code_fresher/model/product.dart';
 import 'package:list_products_code_fresher/Widget/product_form_widget.dart';
+import 'package:list_products_code_fresher/pages/home_page.dart';
 
 class EditPage extends StatefulWidget {
   EditPage({super.key, this.product});
@@ -31,7 +32,10 @@ class _editPageState extends State<EditPage> {
     return IconButton(
       icon: Icon(Icons.save),
       onPressed: (() {
-        addOrEdit();
+        // addOrEdit();
+        setState(() {
+          addProduct();
+        });
       }),
     );
   }
@@ -67,22 +71,6 @@ class _editPageState extends State<EditPage> {
     );
   }
 
-  void addOrEdit() async {
-    final isValid = _formKey.currentState!.validate();
-
-    if (isValid) {
-      final isUpdating = widget.product != null;
-
-      if (isUpdating) {
-        await updateProduct(4);
-      } else {
-        await addProduct;
-      }
-
-      Navigator.of(context).pop();
-    }
-  }
-
   Future updateProduct(int index) async {
     final newProduct = widget.product!.copy(
       title: title,
@@ -100,7 +88,14 @@ class _editPageState extends State<EditPage> {
       description: description,
       linkImage: linkImage,
     );
+    //setState(() {
     list.add(newProduct);
-    // Navigator.of(context).pop();
+    Navigator.pop(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePages(),
+      ),
+    );
+    //});
   }
 }

@@ -8,8 +8,9 @@ import 'package:list_products_code_fresher/control/control.dart';
 class HomePages extends StatefulWidget {
   const HomePages({
     super.key,
+    // this.product,
   });
-  // final Product product;
+  //  Product? product;
   _HomePagesState createState() => _HomePagesState();
 }
 
@@ -22,13 +23,14 @@ class _HomePagesState extends State<HomePages> {
   void initState() {
     super.initState();
 
-    Product pro1() => Product(
-        title: 'Product 1',
-        linkImage:
-            'https://1.bigdata-vn.com/wp-content/uploads/2021/12/Hinh-Nen-Girl-Xinh-Full-HD-Cho-Laptop-Va-May.jpg',
-        price: 0.0,
-        description: 'haah');
-    list.add(pro1());
+    // Product pro1() => Product(
+    //     title: 'Product 1',
+    //     linkImage:
+    //         'https://1.bigdata-vn.com/wp-content/uploads/2021/12/Hinh-Nen-Girl-Xinh-Full-HD-Cho-Laptop-Va-May.jpg',
+    //     price: 0.0,
+    //     description: 'haah');
+    // list.add(pro1());
+    // list.add(context);
   }
 
   removeList(int index) {
@@ -51,11 +53,13 @@ class _HomePagesState extends State<HomePages> {
     );
   }
 
-  Widget listView() => ListView.builder(itemBuilder: (context, index) {
-        Product product = list[index];
+  Widget listView() => ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (context, index) {
+        // Product product = list[index];
 
         return Container(
-          child: productWidget(product: list[index], index: index),
+          child: productWidget(index: index),
         );
       });
 
