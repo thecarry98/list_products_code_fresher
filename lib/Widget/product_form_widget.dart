@@ -23,6 +23,10 @@ class ProductFormWidget extends StatelessWidget {
     required this.linkImageChanged,
   }) : super(key: key);
 
+  void setState() {
+    setState();
+  }
+
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(20),
@@ -172,6 +176,10 @@ class ProductFormWidget extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'Image',
                 ),
+                onChanged: linkImageChanged,
+                onEditingComplete: () {
+                  setState();
+                },
               ),
             ),
           ],

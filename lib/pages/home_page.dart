@@ -6,11 +6,11 @@ import 'package:list_products_code_fresher/pages/edit_page.dart';
 import 'package:list_products_code_fresher/control/control.dart';
 
 class HomePages extends StatefulWidget {
-  const HomePages({
+  HomePages({
     super.key,
-    // this.product,
+    this.product,
   });
-  //  Product? product;
+  Product? product;
   _HomePagesState createState() => _HomePagesState();
 }
 
@@ -20,9 +20,14 @@ class _HomePagesState extends State<HomePages> {
 
   // final List<Product> list = [];
   // Product product()=>Product
+  // final length = list.length;
   void initState() {
     super.initState();
+    // setState(() {
+    // list.add(widget.product!);
+    // });
 
+    // length = list.length;
     // Product pro1() => Product(
     //     title: 'Product 1',
     //     linkImage:
@@ -30,7 +35,6 @@ class _HomePagesState extends State<HomePages> {
     //     price: 0.0,
     //     description: 'haah');
     // list.add(pro1());
-    // list.add(context);
   }
 
   removeList(int index) {

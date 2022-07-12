@@ -44,7 +44,8 @@ class productWidget extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => EditPage(product: list[index])));
+                  builder: (context) =>
+                      EditPage(product: list[index], index: index)));
         },
       ),
       IconButton(
