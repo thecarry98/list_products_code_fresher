@@ -8,9 +8,9 @@ import 'package:list_products_code_fresher/control/control.dart';
 class HomePages extends StatefulWidget {
   HomePages({
     super.key,
-    this.product,
+    // this.product,
   });
-  Product? product;
+  // Product? product;
   _HomePagesState createState() => _HomePagesState();
 }
 

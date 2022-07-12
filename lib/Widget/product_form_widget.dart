@@ -42,7 +42,7 @@ class ProductFormWidget extends StatelessWidget {
           buildPrice(),
           SizedBox(height: 8),
           buildDescription(),
-          SizedBox(height: 18),
+          SizedBox(height: 8),
           buildImage(),
         ],
       ),
@@ -69,17 +69,18 @@ class ProductFormWidget extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child:
-                      colorContainer(Colors.green, '1', Alignment.centerLeft),
+                  child: colorContainer(Color.fromRGBO(0, 188, 212, 1), '1',
+                      Alignment.centerLeft),
                 ),
                 Expanded(
                   flex: 2,
-                  child: colorContainer(Colors.red, '2', Alignment.center),
+                  child: colorContainer(
+                      Color.fromRGBO(33, 150, 243, 1), '2', Alignment.center),
                 ),
                 Expanded(
                   flex: 1,
-                  child:
-                      colorContainer(Colors.blue, '1', Alignment.centerRight),
+                  child: colorContainer(Color.fromRGBO(255, 152, 0, 1), '1',
+                      Alignment.centerRight),
                 ),
               ],
             ),
@@ -117,17 +118,20 @@ class ProductFormWidget extends StatelessWidget {
           fontSize: 20,
         ),
         decoration: InputDecoration(
+          labelText: 'Title',
           hintText: 'Title',
         ),
         onChanged: titleChanged,
       );
   Widget buildPrice() => TextFormField(
+        keyboardType: TextInputType.number,
         maxLines: 1,
         initialValue: price.toString(),
         style: TextStyle(
           fontSize: 20,
         ),
         decoration: InputDecoration(
+          labelText: 'Price',
           hintText: 'Price',
           hintStyle: TextStyle(
               // fontSize: 20,
@@ -144,6 +148,7 @@ class ProductFormWidget extends StatelessWidget {
           fontSize: 20,
         ),
         decoration: InputDecoration(
+          labelText: 'Description',
           hintText: 'Description',
           // labelText: 'haha',
         ),
@@ -158,6 +163,10 @@ class ProductFormWidget extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
+                // margin: EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color.fromRGBO(192, 192, 192, 1)),
+                ),
                 height: 100,
                 width: 100,
                 child: Image.network(
@@ -174,6 +183,7 @@ class ProductFormWidget extends StatelessWidget {
                 ),
                 initialValue: linkImage,
                 decoration: InputDecoration(
+                  labelText: 'Image',
                   hintText: 'Image',
                 ),
                 onChanged: linkImageChanged,
