@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 List<Product> list = [];
+Map<Product, int> mapProduct = {};
 
 final String tableNotes = 'products';
 
@@ -60,4 +61,18 @@ class Product {
         ProductFields.price: price,
         ProductFields.description: description,
       };
+}
+
+class Cart {
+  final Product product;
+  int amount = 0;
+  Cart({required this.product});
+
+  addAmount() {
+    amount += 1;
+  }
+
+  subAmout() {
+    amount -= 1;
+  }
 }

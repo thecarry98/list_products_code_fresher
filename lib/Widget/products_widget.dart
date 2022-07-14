@@ -5,10 +5,12 @@ import 'package:list_products_code_fresher/control/control.dart';
 import 'package:list_products_code_fresher/pages/home_page.dart';
 
 class productWidget extends StatelessWidget {
-  productWidget({super.key, required this.index, this.callbackFn});
+  productWidget(
+      {super.key, required this.index, this.callbackAddFn, this.callbackDelFn});
 
   final int index;
-  VoidCallback? callbackFn;
+  VoidCallback? callbackDelFn;
+  VoidCallback? callbackAddFn;
 
   Widget rowProduct(
     String link,
@@ -44,6 +46,16 @@ class productWidget extends StatelessWidget {
     );
   }
 
+  void addBusiness(BuildContext context) {
+    StatefulBuilder(
+      builder: (context, setState) => AlertDialog(
+        title: Text(
+          'haha',
+        ),
+      ),
+    );
+  }
+
   Widget rowIcon(BuildContext context, int index) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       IconButton(
@@ -63,10 +75,10 @@ class productWidget extends StatelessWidget {
       IconButton(
         iconSize: 30,
         icon: Icon(
-          Icons.call_end,
+          Icons.business,
           color: Colors.green,
         ),
-        onPressed: (() {}),
+        onPressed: callbackAddFn,
       ),
       IconButton(
         iconSize: 30,
@@ -74,7 +86,7 @@ class productWidget extends StatelessWidget {
           Icons.delete,
           color: Colors.red,
         ),
-        onPressed: callbackFn,
+        onPressed: callbackDelFn,
       ),
     ]);
   }
